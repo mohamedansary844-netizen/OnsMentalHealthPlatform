@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <title>أُنس</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">       
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/postes.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+
+
+</head>
+<body>
+    <header class="sub-bage">
+        <img src="images/l.png" alt="Hero Image" class="background-image" width="100px" height="80px">
+        <nav class="navbar-sub">
+            <a href="home.html">Home</a>
+            <a href="chat.html">Chat</a>
+            <a href="booking.html">Booking</a>
+            <a href="blog.html">Blogs</a>
+            <a href="postes.html" class="active">Posts</a>
+            <a href="terms.html">Terms & Conditions</a>
+        </nav>
+    </header>
+    <br>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <h3>Books</h3>
+            <div class="book-item">
+                <img src="images/71Ha3OShqSL._SY466_.jpg" alt="Book 1">
+                <div class="book-title">The Body Keeps the Score</div>
+                <div class="book-description">This book discusses how it affects the body and mind and how it can be healed.</div>
+                <a href="https://www.amazon.com/Body-Keeps-Score-Healing-Trauma/dp/0670785938" class="button">View Book</a>
+            </div>
+            <div class="book-item">
+                <img src="images/book2.jpeg" alt="Book 2">
+                <div class="book-title">Feeling Good: The New Mood Therapy</div>
+                <div class="book-description">Provides cognitive behavioral therapy techniques to help individuals improve their mood and change negative thought patterns.</div>
+                <a href="https://www.amazon.com/Feeling-Good-New-Mood-Therapy/dp/0380810336" class="button">View Book</a>
+            </div>
+            <div class="book-item">
+                <img src="images/book3.jpeg" alt="Book 3">
+                <div class="book-title">The Gifts of Imperfection</div>
+                <div class="book-description">He talks about the importance of self-acceptance and getting rid of the idea of perfection.</div>
+                <a href="https://www.goodreads.com/book/show/6982138-the-gifts-of-imperfection" class="button">View Book</a>
+            </div>
+            <div class="book-item">
+                <img src="images/book4.jpeg" alt="Book 4">
+                <div class="book-title">Man's Search for Meaning</div>
+                <div class="book-description">It recounts the author's experiences in Nazi concentration camps and explores the meaning of life and how to deal with suffering.</div>
+                <a href="https://www.goodreads.com/book/show/4069.Man_s_Search_for_Meaning" class="button">View Book</a>
+            </div>
+            <div class="book-item">
+                <img src="images/book5.jpeg" alt="Book 5">
+                <div class="book-title">Anxiety Relief: Self Help</div>
+                <div class="book-description">Provides practical strategies for overcoming anxiety and stress.</div>
+                <a href="https://books.google.com/books/about/Anxiety_Relief_Self_Help.html?id=K0X4DAAAQBAJ" class="button">View Book</a>
+            </div>
+        </div>
+        <div class="container-post">
+            <div class="post-submission">
+                 <h2>New Post</h2>
+                 <label for="postTitle">Post Title:</label>
+                 <input type="text" id="postTitle" placeholder="Enter post title">
+                 <br>
+                 <label for="postContent">Post Content:</label>
+                 <textarea id="postContent" placeholder="Write your post here..."></textarea>
+                 <div class="file-upload">
+                     <label for="imageUpload">📷 Upload Image</label>
+                     <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(event)">
+                 </div>
+                 <img id="imagePreview" class="uploaded-image" style="display:none;" />
+                 <button onclick="requestPostApproval()">Submit Post</button>
+             </div>
+             <div class="post">
+                <div class="post-header">
+                    <img src="images/d2.jpg" alt="Doctor Image" class="doctor-image">
+                    <span class="doctor-name">Dr. John Smith</span>
+                    <span class="post-time">10 minutes ago</span>
+                </div>
+                <h2>Understanding Anxiety Disorders</h2>
+                <p>Anxiety disorders are the most common mental health disorders. They can significantly impact daily life. It's important to recognize the symptoms and seek help.</p>
+                <div class="reactions">
+                    <button class="reaction-button" onclick="addReaction(this, 'like')">👍 Like</button>
+                    <button class="reaction-button" onclick="addReaction(this, 'love')">❤️ Love</button>
+                    <button class="reaction-button" onclick="addReaction(this, 'angry')">😡 Angry</button>
+                    <button class="reaction-button" onclick="addReaction(this, 'supportive')">🤗 Supportive</button>
+                    <span class="reaction-count" style="margin-left: 10px;">Likes: 0</span>
+                    <span class="reaction-count" style="margin-left: 10px;">Loves: 0</span>
+                    <span class="reaction-count" style="margin-left: 10px;">Angry: 0</span>
+                    <span class="reaction-count" style="margin-left: 10px;">Supportive: 0</span>
+                </div>
+                <div class="comment-section">
+                    <h3>User Questions and Comments</h3>
+                    <div class="identity-selection">
+                        <label>
+                            <input type="radio" name="identity" value="named" checked> Post as You
+                        </label>
+                        <label>
+                            <input type="radio" name="identity" value="anonymous"> Post Anonymously
+                        </label>
+                    </div>
+                    <textarea id="commentInput" placeholder="Write your comment here..." rows="3"></textarea>
+                    <button class="btn btn-primary" onclick="addComment()">Add Comment</button>
+                    <div id="comments" class="comments-list"></div>
+                </div>
+            </div>
+
+            <div class="previous-posts">
+                <h2>Previous Posts</h2>
+                <div class="previous-post">
+                    <div class="post-header">
+                        <img src="images/about-img.jpg" alt="Doctor Image" class="doctor-image">
+                        <span class="doctor-name">Dr. Noha Smith</span>
+                        <span class="post-time">2 days ago</span>
+                    </div>
+                    <h3>Managing Depression</h3>
+                    <p>Depression is a serious condition that affects how you feel, think, and handle daily activities. Seeking treatment is crucial for recovery.</p>
+                    <div class="comment-section">
+                        <div class="reactions">
+                            <button class="reaction-button" onclick="addReaction(this, 'like')">👍 Like</button>
+                            <button class="reaction-button" onclick="addReaction(this, 'love')">❤️ Love</button>
+                            <button class="reaction-button" onclick="addReaction(this, 'angry')">😡 Angry</button>
+                            <button class="reaction-button" onclick="addReaction(this, 'supportive')">🤗 Supportive</button>
+                            <span class="reaction-count" style="margin-left: 10px;">Likes: 0</span>
+                            <span class="reaction-count" style="margin-left: 10px;">Loves: 0</span>
+                            <span class="reaction-count" style="margin-left: 10px;">Angry: 0</span>
+                            <span class="reaction-count" style="margin-left: 10px;">Supportive: 0</span>
+                        </div>
+                        <h4>Comments</h4>
+                        <div class="comment-section">
+                            <h3>User Questions and Comments</h3>
+                            <div class="identity-selection">
+                                <label>
+                                    <input type="radio" name="identity" value="named" checked> Post as You
+                                </label>
+                                <label>
+                                    <input type="radio" name="identity" value="anonymous"> Post Anonymously
+                                </label>
+                            </div>
+                            <textarea id="commentInput" placeholder="Write your comment here..." rows="3"></textarea>
+                            <button class="btn btn-primary" onclick="addComment()">Add Comment</button>
+                            <div id="comments" class="comments-list"></div>
+                        </div>    
+                        <div class="comment"><strong>Ali:</strong> “Thank you for the valuable information! I was looking for ways to deal with anxiety, and these tips helped me a lot.”</div>
+                        <div class="comment"><strong>Fatima:</strong> Can you explain more about the symptoms of depression? "I feel like I need more understanding."</div>
+                    </div>
+                </div>
+            </div>
+            <div class="previous-post">
+                <div class="post-header">
+                    <img src="images/doc/r.webp" alt="Doctor Image" class="doctor-image">
+                    <span class="doctor-name">Dr. Ahmad Hassan</span>
+                    <span class="post-time">3 days ago</span>
+                </div>
+                <h3>The Importance of Mental Health</h3>
+                <p>Mental health is just as important as physical health. Regular check-ins with a mental health professional can help maintain your well-being.</p>
+                <div class="comment-section">
+                    <div class="reactions">
+                        <button class="reaction-button" onclick="addReaction(this, 'like')">👍 Like</button>
+                        <button class="reaction-button"
+                        <button class="reaction-button" onclick="addReaction(this, 'love')">❤️ Love</button>
+                        <button class="reaction-button" onclick="addReaction(this, 'angry')">😡 Angry</button>
+                        <button class="reaction-button" onclick="addReaction(this, 'supportive')">🤗 Supportive</button>
+                        <span class="reaction-count" style="margin-left: 10px;">Likes: 0</span>
+                        <span class="reaction-count" style="margin-left: 10px;">Loves: 0</span>
+                        <span class="reaction-count" style="margin-left: 10px;">Angry: 0</span>
+                        <span class="reaction-count" style="margin-left: 10px;">Supportive: 0</span>
+                    </div>
+                    <h4>Comments</h4>
+                    <div class="comment-section">
+                        <h3>User Questions and Comments</h3>
+                        <div class="identity-selection">
+                            <label>
+                                <input type="radio" name="identity" value="named" checked> Post as You
+                            </label>
+                            <label>
+                                <input type="radio" name="identity" value="anonymous"> Post Anonymously
+                            </label>
+                        </div>
+                        <textarea id="commentInput" placeholder="Write your comment here..." rows="3"></textarea>
+                        <button class="btn btn-primary" onclick="addComment()">Add Comment</button>
+                        <div id="comments" class="comments-list"></div>
+                    </div>
+                    <div class="comment"><strong>Omar:</strong> I've had a difficult experience with anxiety, and I'd like to share my story with you. Can I write a post about that?</div>
+                    <div class="comment"><strong>Sarah:</strong> Loved the article! It's important to talk about mental health openly. Are there any additional resources I can look at?</div>
+                </div>
+            </div>
+            <div class="previous-post">
+                <div class="post-header">
+                    <img src="images/doc/c.webp" alt="Doctor Image" class="doctor-image">
+                    <span class="doctor-name">Dr. Sara Mohamed</span>
+                    <span class="post-time">One week ago</span>
+                </div>
+                <h3>How to Deal with Anxiety</h3>
+                <p>If you suffer from anxiety, try these simple steps:<br>
+                    1- Deep breathing.<br>
+                    2- Exercise.<br>
+                    3- Write about your feelings.<br>
+                    Don't forget that anxiety is a normal feeling, and asking for help is a brave step!</p>
+                <div class="comment-section">
+                    <div class="reactions">
+                        <button class="reaction-button" onclick="addReaction(this, 'like')">👍 Like</button>
+                        <button class="reaction-button" onclick="addReaction(this, 'love')">❤️ Love</button>
+                        <button class="reaction-button" onclick="addReaction(this, 'angry')">😡 Angry</button>
+                        <button class="reaction-button" onclick="addReaction(this, 'supportive')">🤗 Supportive</button>
+                        <span class="reaction-count" style="margin-left: 10px;">Likes: 0</span>
+                        <span class="reaction-count" style="margin-left: 10px;">Loves: 0</span>
+                        <span class="reaction-count" style="margin-left: 10px;">Angry: 0</span>
+                        <span class="reaction-count" style="margin-left: 10px;">Supportive: 0</span>
+                    </div>
+                    <h4>Comments</h4>
+                    <div class="comment-section">
+                        <h3>User Questions and Comments</h3>
+                        <div class="identity-selection">
+                            <label>
+                                <input type="radio" name="identity" value="named" checked> Post as You
+                            </label>
+                            <label>
+                                <input type="radio" name="identity" value="anonymous"> Post Anonymously
+                            </label>
+                        </div>
+                        <textarea id="commentInput" placeholder="Write your comment here..." rows="3"></textarea>
+                        <button class="btn btn-primary" onclick="addComment()">Add Comment</button>
+                        <div id="comments" class="comments-list"></div>
+                    </div>
+                    <div class="comment"><strong>Omar:</strong> Can you talk about how to support friends with psychological problems?</div>
+                    <div class="comment"><strong>Sarah:</strong> Very important topic! I think mental health awareness should start in schools.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Load comments from local storage
+    window.onload = function() {
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    comments.forEach(comment => {
+        addCommentToDOM(comment.text, comment.identity);
+    });
+
+    // Load posts from local storage
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    posts.forEach(post => {
+        addPostToDOM(post.title, post.content, post.image, post.reactions);
+    });
+};
+function addComment() {
+    const commentInput = document.getElementById('commentInput');
+    const commentText = commentInput.value.trim(); // إزالة المسافات الزائدة
+    const identity = document.querySelector('input[name="identity"]:checked').value;
+
+    if (commentText) {
+        // Save comment to local storage
+        const comments = JSON.parse(localStorage.getItem('comments')) || [];
+        comments.push({ text: commentText, identity, time: new Date().toLocaleString() });
+        localStorage.setItem('comments', JSON.stringify(comments));
+        
+        // إضافة التعليق إلى واجهة المستخدم
+        addCommentToDOM(commentText, identity);
+        commentInput.value = ''; // إعادة تعيين حقل الإدخال
+        alert("Comment added!");
+    } else {
+        alert("Please enter a comment.");
+    }
+}
+
+function addCommentToDOM(commentText, identity) {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+    const time = new Date().toLocaleString();
+    commentDiv.innerHTML = `<strong>${identity === 'named' ? 'You' : 'Anonymous'}:</strong> ${commentText} <span class="comment-time">${time}</span>`;
+    document.getElementById('comments').appendChild(commentDiv);
+}
+        function previewImage(event) {
+            const imagePreview = document.getElementById('imagePreview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block'; // Show the image
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function requestPostApproval() {
+    const title = document.getElementById('postTitle').value;
+    const content = document.getElementById('postContent').value;
+    const imageUpload = document.getElementById('imageUpload').files[0];
+
+    if (title && content) {
+        // Simulate approval process
+        setTimeout(() => {
+            // Create a new post element
+            const newPost = document.createElement('div');
+            newPost.classList.add('post');
+
+            const postHeader = document.createElement('div');
+            postHeader.classList.add('post-header');
+            postHeader.innerHTML = `
+                <img src="images/d2.jpg" alt="Doctor Image" class="doctor-image">
+                <span class="doctor-name">You</span>
+                <span class="post-time">${new Date().toLocaleString()}</span>
+            `;
+
+            newPost.appendChild(postHeader);
+            newPost.innerHTML += `<h2>${title}</h2><p>${content}</p>`;
+
+            if (imageUpload) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('uploaded-image');
+                    newPost.appendChild(img);
+                }
+                reader.readAsDataURL(imageUpload);
+            }
+
+            // Append the new post to the container
+            document.querySelector('.container-post').appendChild(newPost);
+
+            alert("Post approved and published!\nTitle: " + title + "\nContent: " + content + 
+                  (imageUpload ? "\nImage: " + imageUpload.name : ""));
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('imageUpload').value = ''; // Reset the file input
+            document.getElementById('imagePreview').style.display = 'none'; // Hide the image preview
+        }, 1000); // Simulate delay for approval
+    } else {
+        alert("Please fill in both fields.");
+    }
+}
+        function addReaction(button, type) {
+            const counts = button.parentElement.querySelectorAll('.reaction-count');
+            
+            // Get the index of the post to update
+            const postDiv = button.closest('.post');
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            const postIndex = Array.from(document.querySelectorAll('.post')).indexOf(postDiv);
+            
+            // Increase the count based on the reaction type
+            if (type === 'like') {
+                const likeCount = counts[0];
+                let currentCount = parseInt(likeCount.innerText.split(': ')[1]);
+                currentCount++;
+                likeCount.innerText = `Likes: ${currentCount}`;
+                posts[postIndex].reactions.like = currentCount;
+            } else if (type === 'love') {
+                const loveCount = counts[1];
+                let currentCount = parseInt(loveCount.innerText.split(': ')[1]);
+                currentCount++;
+                loveCount.innerText = `Loves: ${currentCount}`;
+                posts[postIndex].reactions.love = currentCount;
+            } else if (type === 'angry') {
+                const angryCount = counts[2];
+                let currentCount = parseInt(angryCount.innerText.split(': ')[1]);
+                currentCount++;
+                angryCount.innerText = `Angry: ${currentCount}`;
+                posts[postIndex].reactions.angry = currentCount;
+            } else if (type === 'supportive') {
+                const supportiveCount = counts[3];
+                let currentCount = parseInt(supportiveCount.innerText.split(': ')[1]);
+                currentCount++;
+                supportiveCount.innerText = `Supportive: ${currentCount}`;
+                posts[postIndex].reactions.supportive = currentCount;
+            }
+
+            // Save updated posts to local storage
+            localStorage.setItem('posts', JSON.stringify(posts));
+        }
+
+    </script>
+</body>
+</html>

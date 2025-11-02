@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <title>أُنس</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">       
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+
+</head>
+<body>
+    <div class="controls">
+        <img src="images\homeimg.gif" alt="" width="100%" height="100%">
+    </div>
+    <header>
+        <img src="images/l.png" alt="Hero Image" class="background-image" width="100px" height="80px">
+        <nav class="navbar">
+          <a href="home.html">home</a>
+          <a href="chat.html">chat</a>
+          <a href="booking.html">booking</a>
+          <a href="blog.html">blogs</a>
+          <a href="postes.html">Posts</a>
+          <a href="terms.html">Terms & Conditions</a>
+           <a href="Dashboard.html">Dashboard</a>
+
+          <div class="d-none d-lg-block position-relative">
+            <a href="#top" class="navbar-icon bi-person smoothscroll" onclick="toggleLoginForm()"></a>
+            <div id="loginForm" class="login-form">
+                <span id="form-close" onclick="toggleLoginForm()">&#10005;</span>
+                <img src="images\u1.jpg" alt="User" class="user-image">
+                <input type="text" id="username" placeholder="Username" class="form-control mb-3" required>
+                <div class="input-group mb-3">
+                    <input type="password" id="password" placeholder="Password" class="form-control" required>
+                    <span class="input-group-text" id="togglePassword" style="cursor: pointer;">&#128065;</span>
+                </div>
+                <div class="user-type-selection mb-3">
+                    <input type="radio" id="therapist" name="userType" value="therapist" checked>
+                    <label for="therapist">Therapist</label>
+                    <input type="radio" id="visitor" name="userType" value="visitor">
+                    <label for="visitor">Visitor</label>
+                </div>
+                <button class="btn btn-purple" onclick="validateForm()">Login</button>
+                <p class="error-message" id="error-message">Please fill in all fields.</p>
+                <p>If you don't have an account, <a href="signup.html"><u>Sign up here</u></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+      </nav>
+    </header>
+    <!--
+
+section_3
+
+-->    
+    <section class = "sc-articles">
+      <div class = "title-box text-center">
+          <div class = "content-wrapper">
+              <h2 class = "title-box-name"> <b>Our services!</b></h2>
+              <div class = "title-separator mx-auto"></div>
+          </div>
+      </div>
+      
+      <div class = "articles-list d-flex flex-wrap justify-content-center">
+          <article class = "articles-item">
+              <div class = "item-img">
+                  <img src = "images\WhatsApp Image 2024-10-25 at 17.52.28_b2a58fca.jpg">
+              </div>
+              <div class = "item-body">
+                  <div class = "item-title">Chatbot</div>
+                  <p class = "text">The chatbot responds to inquiries, provides psychological assessments, and delivers results to help users gain insights into their mental health.</p>
+                  <a href = "chat.html" class = "item-link text-blue d-flex align-items-baseline">
+                    <button class="button" >
+                      Start Now!
+                      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </a>
+              </div>
+          </article>
+
+          <article class = "articles-item">
+              <div class = "item-img">
+                  <img src = "images\WhatsApp Image 2024-10-25 at 18.20.18_dd0c4c5a.jpg">
+              </div>
+              <div class = "item-body">
+                  <div class = "item-title">Blog</div>
+                  <p class = "text">Our blog offers articles and videos on various mental health topics, providing valuable insights and resources to support users on their wellness journey.</p>
+                  <a href = "blog.html" class = "item-link text-blue d-flex align-items-baseline">
+                    <button class="button">
+                      Show!
+                      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </a>
+              </div>
+          </article>
+
+          <article class = "articles-item">
+              <div class = "item-img">
+                  <img src = "images/doc.jpg">
+              </div>
+              <div class = "item-body">
+                  <div class = "item-title">Doctors</div>
+                  <p class = "text">We offer appointment bookings and medical consultations with specialists, featuring the convenience of online video sessions.</p>
+                  <a href = "booking.html" class = "item-link text-blue d-flex align-items-baseline">
+                    <button class="button">
+                      Show!
+                      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                  </a>
+              </div>
+          </article>
+      </div>
+  </div>
+</div>
+</section>
+<section class="timeline-section section-padding" id="section_3">
+  <div class="section-overlay"></div>
+
+  <div class="container">
+      <div class="row">
+
+          <div class="col-12 text-center">
+              <h2 class="text-white mb-4">How does it work?</h1>
+          </div>
+
+          <div class="col-lg-10 col-12 mx-auto">
+              <div class="timeline-container">
+                  <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                      <div class="list-progress">
+                          <div class="inner"></div>
+                      </div>
+
+                      <li>
+                          <h4 class="text-white mb-3">Sign Up</h4>
+
+                          <p class="text-white">Log into your account to unlock all the features available on the platform.</p>
+
+                          <div class="icon-holder">
+                            <i class="bi-person-plus"></i>
+                          </div>
+                      </li>
+                      
+                      <li>
+                          <h4 class="text-white mb-3">Psychological Tests & Chatbot Guidance</h4>
+
+                          <p class="text-white">Take personalized psychological assessments to gain insight into your mental health and get advice from our AI-powered chatbot.</p>
+
+                          <div class="icon-holder">
+                            <i class="bi-ui-checks"></i>
+                          </div>
+                      </li>
+
+                      <li>
+                          <h4 class="text-white mb-3">Doctor Consultations</h4>
+
+                          <p class="text-white">Connect with mental health professionals nearby and book either online consultations or in-person appointments.</p>
+
+                          <div class="icon-holder">
+                            <i class="bi-clipboard-plus"></i>
+                          </div>
+                      </li>
+                      <li>
+                          <h4 class="text-white mb-3">Educational Resources</h4>
+
+                          <p class="text-white">Access a variety of articles and videos to expand your knowledge on mental health and well-being.</p>
+
+                          <div class="icon-holder">
+                            <i class="bi-mortarboard"></i>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="col-12 text-center mt-5">
+              <p class="text-white">
+                 Want to Start your journey?
+                  <a href="booking.html" class="btn custom-btn custom-border-btn ms-3">Let's Go</a>
+              </p>
+          </div>
+      </div>
+    </div>
+</section>
+           
+
+
+<section class="why-anas">
+  <div class="container">
+      <h2>Why Ons?</h2>
+      <p class="intro">At Ons, we believe mental health is just as important as physical health. Our mission is to provide psychological support through innovative techniques and tailored resources to meet your needs.</p>
+      
+      <div class="benefits">
+          <div class="benefit">
+              <h3>1. Easy Access to Professional Help</h3>
+              <p>More than 1 in 5 adults experience a mental disorder each year.</p>
+              <canvas class="chart" id="chart1"></canvas>
+          </div>
+          <div class="benefit">
+              <h3>2. AI-Supported Psychological Assessments</h3>
+              <p>AI technology can provide accurate psychological assessments.</p>
+              <canvas class="chart" id="chart2"></canvas>
+          </div>
+          <div class="benefit">
+              <h3>3. Affordable Support</h3>
+              <p>High costs can be a barrier to mental health treatment.</p>
+              <canvas class="chart" id="chart3"></canvas>
+          </div>
+      </div>
+
+      <div class="benefits">
+          <div class="benefit">
+              <h3>4. Reducing Stigma Around Mental Health</h3>
+              <p>Anas promotes a stigma-free environment.</p>
+              <canvas class="chart" id="chart4"></canvas>
+          </div>
+          <div class="benefit">
+              <h3>5. Comprehensive Support Through Multiple Features</h3>
+              <p>Anas provides various resources for mental health support.</p>
+              <canvas class="chart" id="chart5"></canvas>
+          </div>
+          <div class="benefit">
+              <h3>6. Building a Supportive Community</h3>
+              <p>Over 77% of individuals feel better when talking to others.</p>
+              <canvas class="chart" id="chart6"></canvas>
+          </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="script.js"></script>
+  </div>
+</section>
+<!--faq-->
+  <section class="faq-section section-padding" id="section_4">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 col-12">
+                  <h2 class="mb-4"><b>Frequently Asked Questions</b></h2>
+              </div>
+              <div class="clearfix"></div>
+              <div class="col-lg-5 col-12">
+
+                  <img src="images\fq.png" class="img-fluid" alt="FAQs">
+              </div>
+              <div class="col-lg-6 col-12 m-auto">
+                  <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  What is "Ons" and how can it help me?
+                              </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                  "Ons" is a mental health platform designed to support users in understanding and improving their mental well-being. Through psychological assessments, educational resources, and expert guidance, our platform provides personalized recommendations and helps connect users with nearby mental health professionals.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  Are the consultations with professionals confidential?
+                          </button>
+                          </h2>
+
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                  Yes, all consultations are fully confidential and meet privacy standards to ensure a safe space for users. We prioritize your privacy and follow strict data protection policies.
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                 How can I find mental health resources specific to my concerns?
+                          </button>
+                          </h2>
+
+                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                Ons' AI-powered recommendations help you explore content based on your interests and assessments, including videos, articles, and exercises tailored to your needs.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
+<br>
+<!--contact-->
+<section class="contact_section layout_padding" id="contact">
+  <div class="container">
+      <div class="heading_container text-center">
+          <h2>Get In Touch</h2>
+      </div>
+      <div class="row">
+          <div class="col-md-6">
+              <div class="form_container contact-form">
+                  <form action="">
+                      <div class="form-row">
+                          <div class="col-lg-6 mb-3">
+                              <input type="text" class="form-control" placeholder="Your Name" required />
+                          </div>
+                          <div class="col-lg-6 mb-3">
+                              <input type="text" class="form-control" placeholder="Phone Number" required />
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                          <input type="email" class="form-control" placeholder="Email" required />
+                      </div>
+                      <div class="mb-3">
+                          <textarea class="form-control message-box" placeholder="Message" rows="6" required></textarea>
+                      </div>
+                      <div class="btn_box">
+                          <button type="submit" class="btn btn-primary w-100">SEND</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="col-lg-5 col-12 mx-auto mt-5 mt-lg-0">
+            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth" width="100%" height="400" style="border:0;" ></iframe>
+        </div>
+        
+      </div>
+  </div>
+</section>
+
+<!--review-->
+<br>
+<section class="client_section layout_padding-bottom">
+  <div class="container">
+  <div class="heading_container text-center">
+  <h2>Reviews</h2>
+  </div>
+  <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+  <div class="carousel-item active">
+  <div class="row">
+    <div class="col-md-11 col-lg-10 mx-auto">
+      <div class="box">
+        <div class="img-box">
+          <img src ="images\Screenshot-2022-04-19-at-12.09.18.png" alt="" />
+        </div>
+        <div class="detail-box">
+          <div class="name">
+            <h6>
+              Aliaa 
+            </h6>
+          </div>
+          <p>
+            "This site is a real treasure! The support is there for everyone and interactors to make it convenient for them to share and learn. The self-assessment tools have been very helpful to me. Thanks for the work!"
+          </p>
+          <i class="bi bi-quote"></i> <!-- أيقونة الاقتباس -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="carousel-item">
+  <div class="row">
+    <div class="col-md-11 col-lg-10 mx-auto">
+      <div class="box">
+        <div class="img-box">
+          <img src="images\t4.jpg" alt="" />
+        </div>
+        <div class="detail-box">
+          <div class="name">
+            <h6>
+              Ali 
+            </h6>
+          </div>
+          <p>
+            "The mental health website has had a huge positive impact on my life. The information provided is clear and comprehensive, and the support available from professionals has been extremely helpful. I highly recommend it to anyone looking to improve their mental health!"
+          </p>
+          <i class="bi bi-quote"></i> <!-- أيقونة الاقتباس -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="carousel-item">
+  <div class="row">
+    <div class="col-md-11 col-lg-10 mx-auto">
+      <div class="box">
+        <div class="img-box">
+          <img src="images\person-image.png" alt="" />
+        </div>
+        <div class="detail-box">
+          <div class="name">
+            <h6>
+              Ahmad
+            </h6>
+          </div>
+          <p>
+            "The mental health website has valuable information, but I would like to see more videos and webinars. Overall, a very good resource to help with your mental health journey."
+          </p>
+          <i class="bi bi-quote"></i> <!-- أيقونة الاقتباس -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="carousel_btn-container">
+  <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+  <i class="bi bi-arrow-left"></i> <!-- السهم لليسار -->
+  <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+  <i class="bi bi-arrow-right"></i> <!-- السهم لليمين -->
+  <span class="sr-only">Next</span>
+  </a>
+  </div>
+  </div>
+  </div>
+  </section> 
+  <br>
+<!-- end section_6 Revi-->
+
+<!--.......
+footer
+.........-->
+<br>
+<footer class="site-footer section-padding">
+  <div class="container">
+      <div class="row">
+
+          <div class="col-lg-3 col-12 mb-4 pb-2">
+            <a class="navbar-brand" href="index.html">
+              <img src="images\l.png" alt="Ons Logo" width="80" height="90">
+          </a>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6">
+              <h6 class="site-footer-title mb-3">Resources</h6>
+
+              <ul class="site-footer-links">
+                  <li class="site-footer-link-item">
+                      <a href="#" class="site-footer-link">Home</a>
+                  </li>
+
+                  <li class="site-footer-link-item">
+                      <a href="#" class="site-footer-link">How it works</a>
+                  </li>
+
+                  <li class="site-footer-link-item">
+                      <a href="#" class="site-footer-link">FAQs</a>
+                  </li>
+
+                  <li class="site-footer-link-item">
+                      <a href="#" class="site-footer-link">Contact</a>
+                  </li>
+              </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+              <h6 class="site-footer-title mb-3">Information</h6>
+
+              <p class="text-white d-flex mb-1">
+                  <a href="tel: 305-240-9671" class="site-footer-link">
+                      305-240-9671
+                  </a>
+              </p>
+
+              <p class="text-white d-flex">
+                  <a href="mailto:info@company.com" class="site-footer-link">
+                      info@company.com
+                  </a>
+              </p>
+              <div class="footer_social">
+                <a href="">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+            </div>
+            
+          </div>
+          <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  English</button>
+
+                  <ul class="dropdown-menu">
+                      <li><button class="dropdown-item" type="button">Arabic</button></li>
+                  </ul>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</footer>
+
+<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/click-scroll.js"></script>
+    <script src="js/scribt.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link ref="srylesheet" href="/css/Dashboard.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+
+   
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <div class="login-logo">
+                <i class="fas fa-brain"></i>
+                <h2>Admin Dashboard</h2>
+                <p>Mental Health Management System</p>
+            </div>
+            <form onsubmit="return loginAdmin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="adminUsername" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+                <p class="error-msg" id="loginError">Invalid username or password!</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="mainDashboard" class="dashboard hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-brain"></i>
+                    <div>
+                        <h3>Mental Health</h3>
+                        <p>Admin Portal</p>
+                        <a href="home.html" class="btn-home">
+                            home
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Main</div>
+                    <div class="nav-item active" onclick="showPage('overview')">
+                        <i class="fas fa-home"></i>
+                        <span>Overview</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('analytics')">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </div>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Management</div>
+                    <div class="nav-item" onclick="showPage('users')">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('appointments')">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Appointments</span>
+                    </div>
+                    <div class="nav-item" onclick="showPage('resources')">
+                        <i class="fas fa-book-medical"></i>
+                        <span>Resources</span>
+                    </div>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Settings</div>
+                    <div class="nav-item" onclick="showPage('settings')">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 id="pageTitle">Overview</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="header-icons">
+                        <button class="icon-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <button class="icon-btn">
+                            <i class="fas fa-envelope"></i>
+                            <span class="badge">5</span>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Admin" class="user-avatar">
+                        <div class="user-info">
+                            <p>Admin User</p>
+                            <span>Administrator</span>
+                        </div>
+                    </div>
+                    <button class="icon-btn logout-btn" onclick="logoutAdmin()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Overview Page -->
+                <div id="overview" class="page-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon primary">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-trend up">
+                                    <i class="fas fa-arrow-up"></i> 12%
+                                </div>
+                            </div>
+                            <div class="stat-value" id="totalUsers">1,248</div>
+                            <div class="stat-label">Total Users</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon success">
+                                    <i class="fas fa-smile"></i>
+                                </div>
+                                <div class="stat-trend up">
+                                    <i class="fas fa-arrow-up"></i> 8%
+                                </div>
+                            </div>
+                            <div class="stat-value" id="avgMood">78%</div>
+                            <div class="stat-label">Average Mood Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon warning">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="stat-trend down">
+                                    <i class="fas fa-arrow-down"></i> 3%
+                                </div>
+                            </div>
+                            <div class="stat-value" id="totalAppointments">342</div>
+                            <div class="stat-label">Total Appointments</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon danger">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="stat-trend up">
+                                    <i class="fas fa-arrow-up"></i> 18%
+                                </div>
+                            </div>
+                            <div class="stat-value" id="chatSessions">2,847</div>
+                            <div class="stat-label">Chat Sessions</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">User Activity Overview</h3>
+                            <div class="chart-filters">
+                                <button class="filter-btn active">7 Days</button>
+                                <button class="filter-btn">30 Days</button>
+                                <button class="filter-btn">90 Days</button>
+                            </div>
+                        </div>
+                        <canvas id="activityChart" height="80"></canvas>
+                    </div>
+
+                    <div class="data-table">
+                        <div class="table-header">
+                            <h3 class="table-title">Recent Activities</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>Mood Update</td>
+                                    <td>Oct 25, 2025</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="action-btn edit"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jane Smith</td>
+                                    <td>Appointment Booked</td>
+                                    <td>Oct 24, 2025</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="action-btn edit"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mike Johnson</td>
+                                    <td>Chat Session</td>
+                                    <td>Oct 23, 2025</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>
+                                        <div class="action-btns">
+                                            <button class="action-btn edit"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Other Pages (placeholder for now) -->
+                <div id="analytics" class="page-section">
+                    <h2>Analytics Dashboard - Coming Soon</h2>
+                </div>
+                <div id="users" class="page-section">
+                    <h2>User Management - Coming Soon</h2>
+                </div>
+                <div id="appointments" class="page-section">
+                    <h2>Appointments Management - Coming Soon</h2>
+                </div>
+                <div id="resources" class="page-section">
+                    <h2>Resources Management - Coming Soon</h2>
+                </div>
+                <div id="settings" class="page-section">
+                    <h2>Settings - Coming Soon</h2>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Login Credentials
+        const ADMIN_USER = 'admin';
+        const ADMIN_PASS = 'admin123';
+
+        // Login Function
+        function loginAdmin(event) {
+            event.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (username === ADMIN_USER && password === ADMIN_PASS) {
+                document.getElementById('loginContainer').classList.add('hidden');
+                document.getElementById('mainDashboard').classList.remove('hidden');
+                initDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('loginError').style.display = 'none';
+                }, 3000);
+            }
+            return false;
+        }
+
+        // Logout Function
+        function logoutAdmin() {
+            if (confirm('Are you sure you want to logout?')) {
+                document.getElementById('loginContainer').classList.remove('hidden');
+                document.getElementById('mainDashboard').classList.add('hidden');
+                document.getElementById('adminUsername').value = '';
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+
+        // Show Page Function
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update page title
+            const titles = {
+                'overview': 'Overview',
+                'analytics': 'Analytics',
+                'users': 'User Management',
+                'appointments': 'Appointments',
+                'resources': 'Resources',
+                'settings': 'Settings'
+            };
+            document.getElementById('pageTitle').textContent = titles[pageId] || 'Dashboard';
+            
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.nav-item').classList.add('active');
+        }
+
+        // Initialize Dashboard
+        function initDashboard() {
+            // Load stats from localStorage or use defaults
+            loadStats();
+            
+            // Initialize chart
+            initActivityChart();
+            
+            // Simulate real-time updates
+            setInterval(updateStats, 5000);
+        }
+
+        // Load Stats
+        function loadStats() {
+            const stats = JSON.parse(localStorage.getItem('dashboardStats')) || {
+                totalUsers: 1248,
+                avgMood: 78,
+                totalAppointments: 342,
+                chatSessions: 2847
+            };
+            
+            document.getElementById('totalUsers').textContent = stats.totalUsers.toLocaleString();
+            document.getElementById('avgMood').textContent = stats.avgMood + '%';
+            document.getElementById('totalAppointments').textContent = stats.totalAppointments.toLocaleString();
+            document.getElementById('chatSessions').textContent = stats.chatSessions.toLocaleString();
+        }
+
+        // Update Stats (simulate real-time)
+        function updateStats() {
+            const stats = JSON.parse(localStorage.getItem('dashboardStats')) || {
+                totalUsers: 1248,
+                avgMood: 78,
+                totalAppointments: 342,
+                chatSessions: 2847
+            };
+            
+            // Random small increases
+            if (Math.random() > 0.7) {
+                stats.totalUsers += Math.floor(Math.random() * 3);
+                stats.chatSessions += Math.floor(Math.random() * 5);
+                stats.totalAppointments += Math.floor(Math.random() * 2);
+                
+                localStorage.setItem('dashboardStats', JSON.stringify(stats));
+                loadStats();
+            }
+        }
+
+        // Initialize Activity Chart
+        let activityChart;
+        function initActivityChart() {
+            const ctx = document.getElementById('activityChart').getContext('2d');
+            
+            const gradient1 = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient1.addColorStop(0, 'rgba(99, 102, 241, 0.3)');
+            gradient1.addColorStop(1, 'rgba(99, 102, 241, 0)');
+            
+            const gradient2 = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient2.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+            gradient2.addColorStop(1, 'rgba(139, 92, 246, 0)');
+            
+            activityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        {
+                            label: 'Chat Sessions',
+                            data: [420, 380, 450, 510, 490, 530, 580],
+                            borderColor: '#6366f1',
+                            backgroundColor: gradient1,
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            pointBackgroundColor: '#6366f1',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2
+                        },
+                        {
+                            label: 'Appointments',
+                            data: [45, 52, 48, 60, 55, 58, 65],
+                            borderColor: '#8b5cf6',
+                            backgroundColor: gradient2,
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            pointBackgroundColor: '#8b5cf6',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            align: 'end',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    size: 13,
+                                    family: 'Inter',
+                                    weight: '600'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1e293b',
+                            padding: 12,
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            titleFont: {
+                                size: 14,
+                                weight: '600'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            displayColors: true,
+                            boxPadding: 6
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#f1f5f9',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12,
+                                    family: 'Inter'
+                                },
+                                color: '#64748b',
+                                padding: 10
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12,
+                                    family: 'Inter',
+                                    weight: '600'
+                                },
+                                color: '#64748b',
+                                padding: 10
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    }
+                }
+            });
+        }
+
+        // Chart Filter Buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Update chart data based on filter (mock data)
+                    const period = btn.textContent;
+                    updateChartData(period);
+                });
+            });
+        });
+
+        function updateChartData(period) {
+            let newData;
+            
+            if (period === '7 Days') {
+                newData = {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    data1: [420, 380, 450, 510, 490, 530, 580],
+                    data2: [45, 52, 48, 60, 55, 58, 65]
+                };
+            } else if (period === '30 Days') {
+                newData = {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    data1: [1800, 2100, 1950, 2250],
+                    data2: [210, 235, 218, 245]
+                };
+            } else {
+                newData = {
+                    labels: ['Month 1', 'Month 2', 'Month 3'],
+                    data1: [7200, 8100, 8850],
+                    data2: [820, 905, 985]
+                };
+            }
+            
+            activityChart.data.labels = newData.labels;
+            activityChart.data.datasets[0].data = newData.data1;
+            activityChart.data.datasets[1].data = newData.data2;
+            activityChart.update();
+        }
+
+        // Mobile Menu Toggle
+        const menuToggle = document.createElement('button');
+        menuToggle.className = 'icon-btn';
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        menuToggle.style.display = 'none';
+        
+        if (window.innerWidth <= 1024) {
+            document.querySelector('.header-left').prepend(menuToggle);
+            menuToggle.style.display = 'flex';
+            menuToggle.style.marginRight = '16px';
+            
+            menuToggle.addEventListener('click', () => {
+                document.querySelector('.sidebar').classList.toggle('active');
+            });
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 1024) {
+                menuToggle.style.display = 'flex';
+            } else {
+                menuToggle.style.display = 'none';
+                document.querySelector('.sidebar').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

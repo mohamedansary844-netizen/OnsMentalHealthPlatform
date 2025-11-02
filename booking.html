@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images\favicon.png" type="">
+    <title>أُنس</title>
+    <!-- CSS FILES -->        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/booking.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+
+
+</head>
+<body >
+    <header class="sub-bage">
+        <img src="images/l.png" alt="Hero Image" class="background-image" width="100px" height="80px">
+        <nav class="navbar-sub">
+            <a href="home.html" >Home</a>
+            <a href="chat.html" >Chat</a>
+            <a href="booking.html" class="active">Booking</a>
+            <a href="blog.html">Blogs</a>
+            <a href="postes.html">postes</a>
+            <a href="terms.html">Terms & Conditions</a>
+        </nav>
+    </header>
+<main>
+    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+        <img src="images/pd.png" alt="Hero Image" class="background-image">
+    </section>
+    
+    <div class="container my-4">
+        <div class="row">
+            <!-- Sidebar Filters -->
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h4 class="text-primary">Filters</h4>
+                    <h6 class="mt-4">City</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cityAswan" onclick="filterTherapists()">
+                        <label class="form-check-label" for="cityAswan">Aswan</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cityLuxor" onclick="filterTherapists()">
+                        <label class="form-check-label" for="cityLuxor">Luxor</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cityQena" onclick="filterTherapists()">
+                        <label class="form-check-label" for="cityQena">Qena</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cityMinya" onclick="filterTherapists()">
+                        <label class="form-check-label" for="cityMinya">Minya</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="cityAssiut" onclick="filterTherapists()">
+                        <label class="form-check-label" for="cityAssiut">Assiut</label>
+                    </div>
+
+                    <h6 class="mt-4">Therapist Gender</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="allGender" value="all" checked onclick="filterTherapists()">
+                        <label class="form-check-label" for="allGender">All</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" onclick="filterTherapists()">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female" onclick="filterTherapists()">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+
+                    <h6 class="mt-4">Therapist Rating</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating1" value="rating1" onclick="filterTherapists()">
+                        <label class="form-check-label" for="rating1">&#9733;&#9734;&#9734;&#9734;&#9734;</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating2" value="rating2" onclick="filterTherapists()">
+                        <label class="form-check-label" for="rating2">&#9733;&#9733;&#9734;&#9734;&#9734;</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating3" value="rating3" onclick="filterTherapists()">
+                        <label class="form-check-label" for="rating3">&#9733;&#9733;&#9733;&#9734;&#9734;</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating4" value="rating4" onclick="filterTherapists()">
+                        <label class="form-check-label" for="rating4">&#9733;&#9733;&#9733;&#9733;&#9734;</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="rating" id="rating5" value="rating5" onclick="filterTherapists()">
+                        <label class="form-check-label" for="rating5">&#9733;&#9733;&#9733;&#9733;&#9733;</label>
+                    </div>
+
+                    <h6 class="mt-4">Therapist Specialties</h6>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="familyTherapy" value="Family therapy" onclick="filterTherapists()">
+                        <label class="form-check-label" for="familyTherapy">Family Therapy</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="therapist" value="Therapist" onclick="filterTherapists()">
+                        <label class="form-check-label" for="therapist">Therapist</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="clinicalPsychology" value="Clinical Psychology" onclick="filterTherapists()">
+                        <label class="form-check-label" for="clinicalPsychology">Clinical Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="consultingPsychology" value="Consulting Psychology" onclick="filterTherapists()">
+                        <label class="form-check-label" for="consultingPsychology">Consulting Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="depressionAddiction" value="Depression, Addiction" onclick="filterTherapists()">
+                        <label class="form-check-label" for="depressionAddiction">Depression, Addiction</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="counselingPsychology" value="Counseling Psychology" onclick="filterTherapists()">
+                        <label class="form-check-label" for="counselingPsychology">Counseling Psychology</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="specialty" id="neuropsychiatry" value="Neuropsychiatry" onclick="filterTherapists()">
+                        <label class="form-check-label" for="neuropsychiatry">Neuropsychiatry</label>
+                    </div>
+                    <br>
+
+                    <button class="btn btn-clear" onclick="clearFilters()">Clear</button>
+                </div>
+            </div>
+            
+            <!-- Therapist Cards -->
+            <div class="col-md-9" id="therapistCards">
+                <div class="row g-3">
+                    <!-- Therapist Card 1 -->
+                    <div class="col-md-4 card-container" data-city="Aswan" data-gender="female" data-rating="rating4" data-specialty="Family therapy">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/f.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Huda Saad</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1300 EGP/60 Min | 900 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Family therapy</span>
+                            <p class="text-muted">Nearest appointment: Nov. 4 , Aswan</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 2 -->
+                    <div class="col-md-4 card-container" data-city="Luxor" data-gender="male" data-rating="rating3" data-specialty="Therapist">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/d.jpeg" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Khalid Jone</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1000 EGP/60 Min | 500 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Therapist</span>
+                            <p class="text-muted">Nearest appointment: Nov. 14 , Luxor</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 3 -->
+                    <div class="col-md-4 card-container" data-city="Minya" data-gender="female" data-rating="rating3" data-specialty="Clinical Psychology">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/mm.png" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Marwa Fadl</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1100 EGP/60 Min | 550 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Clinical Psychology</span>
+                            <p class="text-muted">Nearest appointment: Sep. 1 , Minya</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 4 -->
+                    <div class="col-md-4 card-container" data-city="Qena" data-gender="male" data-rating="rating3" data-specialty="Consulting Psychology">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/b.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Ali Ahmed</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1600 EGP/60 Min | 800 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Consulting Psychology</span>
+                            <p class="text-muted">Nearest appointment: Nov. 8 , Qena</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 5 -->
+                    <div class="col-md-4 card-container" data-city="Assiut" data-gender="male" data-rating="rating5" data-specialty="Depression, Addiction">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/r.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Hadi Ali</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1900 EGP/60 Min | 950 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Depression, Addiction</span>
+                            <p class="text-muted">Nearest appointment: Nov. 1 , Assiut</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 6 -->
+                    <div class="col-md-4 card-container" data-city="Luxor" data-gender="female" data-rating="rating2" data-specialty="Therapist">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/a.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Sara Khalid</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9734;&#9734;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1000 EGP/60 Min | 500 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Therapist</span>
+                            <p class="text-muted">Nearest appointment: Nov. 14 , Luxor</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 7 -->
+                    <div class="col-md-4 card-container" data-city="Luxor" data-gender="male" data-rating="rating3" data-specialty="Counseling Psychology">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/t.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Nour Fadel</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1000 EGP/60 Min | 500 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Counseling Psychology</span>
+                            <p class="text-muted">Nearest appointment: Nov. 14 , Luxor</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 8 -->
+                    <div class="col-md-4 card-container" data-city="Assiut" data-gender="male" data-rating="rating4" data-specialty="Clinical Psychology">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/pp.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Bassel Tom</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1200 EGP/60 Min | 600 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Clinical Psychology</span>
+                            <p class="text-muted">Nearest appointment: Nov. 20 , Assiut</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Therapist Card 9 -->
+                    <div class="col-md-4 card-container" data-city="Qena" data-gender="female" data-rating="rating3" data-specialty="Neuropsychiatry">
+                        <div class="card therapist-card p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="images/doc/c.webp" alt="Profile" class="me-3" width="80" height="75">
+                                <div>
+                                    <h5>Dr.Mona Jad</h5>
+                                    <p class="text-primary mb-1">Psychiatrist</p>
+                                    <div class="star-rating">
+                                        <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-cash me-2" style="font-size: 30px;"></i>
+                                <span>1100 EGP/60 Min | 500 EGP/30 Min</span>
+                            </div>
+                            <span class="badge bg-light text-primary">Neuropsychiatry</span>
+                            <p class="text-muted">Nearest appointment: Nov. 10 , Qena</p>
+                            <button class="btn btn-primary">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer section-padding">
+    <div class="container">
+        <div class="row">
+  
+            <div class="col-lg-3 col-12 mb-4 pb-2">
+              <a class="navbar-brand" href="index.html">
+                <img src="images\l.png" alt="Ons Logo" width="80" height="90">
+            </a>
+            </div>
+  
+            <div class="col-lg-3 col-md-4 col-6">
+                <h6 class="site-footer-title mb-3">Resources</h6>
+  
+                <ul class="site-footer-links">
+                    <li class="site-footer-link-item">
+                        <a href="#" class="site-footer-link">Home</a>
+                    </li>
+  
+                    <li class="site-footer-link-item">
+                        <a href="#" class="site-footer-link">How it works</a>
+                    </li>
+  
+                    <li class="site-footer-link-item">
+                        <a href="#" class="site-footer-link">FAQs</a>
+                    </li>
+  
+                    <li class="site-footer-link-item">
+                        <a href="#" class="site-footer-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+  
+            <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                <h6 class="site-footer-title mb-3">Information</h6>
+  
+                <p class="text-white d-flex mb-1">
+                    <a href="tel: 305-240-9671" class="site-footer-link">
+                        305-240-9671
+                    </a>
+                </p>
+  
+                <p class="text-white d-flex">
+                    <a href="mailto:info@company.com" class="site-footer-link">
+                        info@company.com
+                    </a>
+                </p>
+                <div class="footer_social">
+                  <a href="">
+                      <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                      <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                      <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="">
+                      <i class="bi bi-instagram" aria-hidden="true"></i>
+                  </a>
+              </div>
+              
+            </div>
+            <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    English</button>
+  
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item" type="button">Arabic</button></li>
+                    </ul>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/click-scroll.js"></script>
+
+<script>
+    function filterTherapists() {
+        const cityFilters = Array.from(document.querySelectorAll('input[type="checkbox"][id^="city"]')).map(input => input.checked ? input.id.replace('city', '') : null).filter(Boolean);
+        const genderFilter = document.querySelector('input[name="gender"]:checked').value;
+        const ratingFilter = Array.from(document.querySelectorAll('input[name="rating"]:checked')).map(input => input.value);
+        const specialtyFilters = Array.from(document.querySelectorAll('input[type="checkbox"][name="specialty"]:checked')).map(input => input.value);
+
+        const cards = document.querySelectorAll('.card-container');
+
+        cards.forEach(card => {
+            const city = card.getAttribute('data-city');
+            const gender = card.getAttribute('data-gender');
+            const rating = card.getAttribute('data-rating');
+            const specialty = card.getAttribute('data-specialty');
+
+            const cityMatch = cityFilters.length === 0 || cityFilters.includes(city);
+            const genderMatch = genderFilter === 'all' || gender === genderFilter;
+            const ratingMatch = ratingFilter.length === 0 || ratingFilter.includes(rating);
+            const specialtyMatch = specialtyFilters.length === 0 || specialtyFilters.includes(specialty);
+
+            if (cityMatch && genderMatch && ratingMatch && specialtyMatch) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function clearFilters() {
+        document.querySelectorAll('.form-check-input').forEach(input => {
+            input.checked = false;
+        });
+        document.querySelector('input[name="gender"][value="all"]').checked = true;
+        filterTherapists();
+    }
+
+    // دالة لتحويل البيانات وإرسالها للصفحة الثانية
+    function bookDoctor(doctorName, specialty, price, imageSrc) {
+        const params = new URLSearchParams({
+            doctor: doctorName,
+            specialty: specialty,
+            price: price,
+            image: imageSrc
+        });
+        
+        window.location.href = `bookingform.html?${params.toString()}`;
+    }
+
+    // إضافة الـ event listeners لكل أزرار Book Now
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card-container');
+        
+        cards.forEach(card => {
+            const doctorNameEl = card.querySelector('h5');
+            const specialtyEl = card.querySelector('.badge');
+            const priceEl = card.querySelector('.bi-cash').nextElementSibling;
+            const imageEl = card.querySelector('img');
+            const bookBtn = card.querySelector('.btn-primary');
+            
+            if (bookBtn && doctorNameEl && specialtyEl && priceEl && imageEl) {
+                bookBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const doctorName = doctorNameEl.textContent.trim();
+                    const specialty = specialtyEl.textContent.trim();
+                    const price = priceEl.textContent.trim();
+                    const imageSrc = imageEl.getAttribute('src');
+                    
+                    bookDoctor(doctorName, specialty, price, imageSrc);
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

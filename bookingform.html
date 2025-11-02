@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <title>أُنس</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/bookingForm.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="header-image">
+            <img src="images/doc/bbt.gif" alt="Booking Header">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card doctor-card">
+                    <div class="card-header text-center">
+                        <h5 class="card-title">Doctor Information</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        
+                        <img src="images/doc/f.webp" alt="Doctor" class="doctor-image" id="doctorImageDisplay">
+                        
+                        <p><i class="fas fa-user-md"></i> <strong>Name:</strong> <span id="doctorNameDisplay">Dr. Ahmed</span></p>
+                        <hr>
+
+                        <p><i class="fas fa-stethoscope"></i> <strong>Specialty:</strong> <span id="doctorSpecialtyDisplay">Family Medicine</span></p>
+                        
+                        <p><i class="fas fa-money-bill-wave"></i> <strong>Fee:</strong> <span id="doctorPriceDisplay"></span></p>
+
+                        <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS, MD in Family Medicine</p>
+                        <hr>
+                        <p><i class="fas fa-phone"></i> <strong>Contact:</strong> 0123456789</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Nile Street, Cairo</p>
+                        <hr>
+                        <p><i class="fas fa-clock"></i> <strong>Available Days:</strong> Sunday - Thursday</p>
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Working Hours:</strong> 9 AM - 5 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card appointment-card">
+                    <div class="card-header">
+                        <h5 class="card-title">Appointment Booking</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="appointmentForm">
+                            <div class="form-group">
+                                <label for="patientName">Patient Name:</label>
+                                <input type="text" class="form-control" id="patientName" required>
+                                <div class="error" id="nameError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientNumber">Patient Number:</label>
+                                <input type="text" class="form-control" id="patientNumber" required>
+                                <div class="error" id="numberError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientEmail">Email:</label>
+                                <input type="email" class="form-control" id="patientEmail" required>
+                                <div class="error" id="emailError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientDocument">Upload Birth Certificate or ID:</label>
+                                <input type="file" class="form-control" id="patientDocument" accept="image/*,.pdf" required>
+                                <div class="error" id="documentError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="appointmentDate">Appointment Date:</label>
+                                <input type="date" class="form-control" id="appointmentDate" required>
+                                <div class="error" id="dateError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Appointment Time:</label>
+                                <div id="appointmentTime" class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-outline-primary">
+                                        <input type="radio" name="time" id="time1" value="9:00 AM" required> 9:00 AM
+                                    </label>
+                                    <label class="btn btn-outline-primary">
+                                        <input type="radio" name="time" id="time2" value="10:00 AM"> 10:00 AM
+                                    </label>
+                                    <label class="btn btn-outline-primary">
+                                        <input type="radio" name="time" id="time3" value="11:00 AM"> 11:00 AM
+                                    </label>
+                                    <label class="btn btn-outline-primary">
+                                        <input type="radio" name="time" id="time4" value="1:00 PM"> 1:00 PM
+                                    </label>
+                                    <label class="btn btn-outline-primary">
+                                        <input type="radio" name="time" id="time5" value="3:00 PM"> 3:00 PM
+                                    </label>
+                                </div>
+                                <div class="error" id="timeError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointmentType">Appointment Type:</label>
+                                <select class="form-control" id="appointmentType" required>
+                                    <option value="">Select Type</option>
+                                    <option value="online">Online</option>
+                                    <option value="in_clinic">In Clinic</option>
+                                </select>
+                                <div class="error" id="typeError"></div>
+                            </div>
+
+                            <div class="form-group hidden" id="paymentMethodGroup">
+                                <label for="paymentMethod">Payment Method:</label>
+                                <select class="form-control" id="paymentMethod">
+                                    <option value="">Select Payment Method</option>
+                                    <option value="credit_card">Credit Card</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="bank_transfer">Bank Transfer</option>
+                                </select>
+                            </div>
+
+                            <div id="creditCardInfo" class="hidden">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number:</label>
+                                    <input type="text" class="form-control" id="cardNumber" maxlength="16" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-group">
+                                    <label for="expiryDate">Expiry Date:</label>
+                                    <input type="month" class="form-control" id="expiryDate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV:</label>
+                                    <input type="text" class="form-control" id="cvv" maxlength="3" placeholder="123">
+                                </div>
+                            </div>
+
+                            <div id="paypalInfo" class="hidden">
+                                <div class="form-group">
+                                    <label for="paypalEmail">PayPal Email:</label>
+                                    <input type="email" class="form-control" id="paypalEmail" placeholder="example@paypal.com">
+                                </div>
+                            </div>
+
+                            <div id="bankTransferInfo" class="hidden">
+                                <div class="form-group">
+                                    <label for="bankName">Bank Name:</label>
+                                    <input type="text" class="form-control" id="bankName" placeholder="Bank Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="accountNumber">Account Number:</label>
+                                    <input type="text" class="form-control" id="accountNumber" placeholder="1234567890">
+                                </div>
+                                <div class="form-group">
+                                    <label for="swiftCode">SWIFT Code:</label>
+                                    <input type="text" class="form-control" id="swiftCode" placeholder="ABCDEFGH">
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" id="bookButton">Book Appointment</button>
+                        </form>
+                        <div id="confirmationMessage" class="hidden mt-3 alert alert-success"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // سحب البيانات من الرابط
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // قراءة كل معلومة من الرابط
+            const doctorName = decodeURIComponent(urlParams.get('doctor') || 'Dr. Ahmed');
+            const specialty = decodeURIComponent(urlParams.get('specialty') || 'Family Medicine');
+            const price = decodeURIComponent(urlParams.get('price') || 'N/A');
+            const imageSrc = decodeURIComponent(urlParams.get('image') || 'images/doc/f.webp');
+
+            // تحديث الـ HTML بالبيانات الجديدة
+            $('#doctorNameDisplay').text(doctorName);
+            $('#doctorSpecialtyDisplay').text(specialty);
+            $('#doctorPriceDisplay').text(price);
+            $('#doctorImageDisplay').attr('src', imageSrc);
+
+            // Show/Hide Payment Method based on appointment type
+            $('#appointmentType').change(function () {
+                const selectedType = $(this).val();
+                if (selectedType === 'online') {
+                    $('#paymentMethodGroup').removeClass('hidden');
+                } else {
+                    $('#paymentMethodGroup').addClass('hidden');
+                    $('#paymentMethod').val('');
+                    $('#creditCardInfo').addClass('hidden');
+                    $('#paypalInfo').addClass('hidden');
+                    $('#bankTransferInfo').addClass('hidden');
+                }
+            });
+
+            // Show/Hide payment details based on payment method
+            $('#paymentMethod').change(function () {
+                const selectedMethod = $(this).val();
+                $('#creditCardInfo').addClass('hidden');
+                $('#paypalInfo').addClass('hidden');
+                $('#bankTransferInfo').addClass('hidden');
+                if (selectedMethod === 'credit_card') {
+                    $('#creditCardInfo').removeClass('hidden');
+                } else if (selectedMethod === 'paypal') {
+                    $('#paypalInfo').removeClass('hidden');
+                } else if (selectedMethod === 'bank_transfer') {
+                    $('#bankTransferInfo').removeClass('hidden');
+                }
+            });
+
+            // Form submission
+            $('#bookButton').click(function () {
+                const patientName = $('#patientName').val();
+                const patientNumber = $('#patientNumber').val();
+                const patientEmail = $('#patientEmail').val();
+                const appointmentDate = $('#appointmentDate').val();
+                const appointmentTime = $('input[name="time"]:checked').val();
+                const appointmentType = $('#appointmentType').val();
+                const paymentMethod = $('#paymentMethod').val();
+
+                // Validation
+                let valid = true;
+
+                $('.error').text('');
+
+                if (!patientName) {
+                    $('#nameError').text('Patient name is required.');
+                    valid = false;
+                }
+                if (!patientNumber) {
+                    $('#numberError').text('Patient number is required.');
+                    valid = false;
+                }
+                if (!patientEmail) {
+                    $('#emailError').text('Email is required.');
+                    valid = false;
+                }
+                if (!appointmentDate) {
+                    $('#dateError').text('Appointment date is required.');
+                    valid = false;
+                }
+                if (!appointmentTime) {
+                    $('#timeError').text('Appointment time is required.');
+                    valid = false;
+                }
+                if (!appointmentType) {
+                    $('#typeError').text('Appointment type is required.');
+                    valid = false;
+                }
+                if (appointmentType === 'online' && !paymentMethod) {
+                    $('#typeError').text('Payment method is required for online appointments.');
+                    valid = false;
+                }
+
+                if (valid) {
+                    const confirmationMessage = `Appointment booked successfully!\nPatient Name: ${patientName}\nPatient Number: ${patientNumber}\nEmail: ${patientEmail}\nDate: ${appointmentDate}\nTime: ${appointmentTime}\nType: ${appointmentType}\nPayment Method: ${paymentMethod}`;
+                    $('#confirmationMessage').text(confirmationMessage).removeClass('hidden');
+                    $('#appointmentForm')[0].reset();
+                    $('#paymentMethodGroup').addClass('hidden');
+                    $('#creditCardInfo').addClass('hidden');
+                    $('#paypalInfo').addClass('hidden');
+                    $('#bankTransferInfo').addClass('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="css/user profile.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div>
+                <img src="images\client.jpg" alt="Patient Image">
+                <div>
+                    <h2>Ahmed Mohamed</h2>
+                    <p>Age: 30 years</p>
+                    <p>Gender: Male</p>
+                    <p>Phone Number: 01234567890</p>
+                </div>
+            </div>
+        </div>
+        <div class="history">
+            <h2>Medical History</h2>
+            <ul>
+                <li>Chronic Anxiety</li>
+                <li>Mild Depression</li>
+                <li>Previous Treatment Sessions</li>
+            </ul>
+            <button onclick="addHistory()">Add Medical History</button>
+        </div>
+        <div class="sessions">
+            <div class="session-item">
+                <h3>Previous Session1</h3>
+                <p>Session Date: January 15, 2025</p>
+                <p>Session Report: The patient showed significant improvement in managing anxiety symptoms. Continuation of treatment is recommended.</p>
+                <br>
+                <h3>Previous Session2</h3>
+                <p>Session Date: February 1, 2025</p>
+                <p>Session Report: Significant progress was made in addressing the problem. Continuation of treatment is recommended.</p>
+            </div>
+            <div class="session-item">
+                <h3>Upcoming Session</h3>
+                <p>Session Date: February 30, 2025</p>
+                <p>Notes: The focus will be on reinforcing coping strategies for anxiety.</p>
+                <a href="booking.html" class="book-session">Book Session</a>
+            </div>
+        </div>
+        <div class="buttons">
+            <button onclick="changePassword()">Change Password</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <script>
+        function addHistory() {
+            const newHistory = prompt("Enter medical history details:");
+            if (newHistory) {
+                const li = document.createElement("li");
+                li.textContent = newHistory;
+                document.querySelector(".history ul").appendChild(li);
+            }
+        }
+
+        function changePassword() {
+            // Add code to handle password change functionality
+            alert("Password change functionality not implemented yet.");
+        }
+
+        function logout() {
+            // Add code to handle logout functionality
+            alert("Logout functionality not implemented yet.");
+        }
+    </script>
+</body>
+</html>

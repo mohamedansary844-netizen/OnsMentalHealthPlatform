@@ -1,0 +1,123 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #E6E6FA; /* Pale Lavender */
+    color: #333333; /* Dark Grey */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-y: auto; /* Allows vertical scrolling */
+}
+
+header.sub-bage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #3B1E54; /* لون الخلفية الداكن */
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+    /* تنسيق شعار الموقع */
+    header.sub-bage .background-image {
+        width: 70px; /* حجم الشعار */
+        height: auto;
+        margin-left: 20px;
+    }
+
+/* تنسيق شريط التنقل */
+header .navbar-sub {
+    display: flex;
+    align-items: center;
+}
+
+    /* تنسيق الروابط داخل شريط التنقل */
+    header .navbar-sub a {
+        color: #ffffff; /* لون النص الأبيض */
+        font-size: 1.2rem; /* حجم النص */
+        margin: 0 1rem; /* مسافة بين الروابط */
+        text-decoration: none; /* إزالة الخط السفلي */
+        transition: color 0.3s ease; /* انتقال سلس عند التمرير */
+        margin-left: 10px; /* تحريك الروابط جهة اليمين قليلاً */
+    }
+
+        /* تأثير التمرير على الروابط */
+        header .navbar-sub a:hover {
+            color: #9B7EBD; /* لون مختلف عند التمرير */
+        }
+
+/* تعديل الارتفاع لحجم أكبر */
+header.sub-bage {
+    height: 30px; /* ارتفاع الهيدر */
+}
+
+
+/* Active link style (optional, if needed) */
+header .navbar-sub a.active {
+    color: #9B7EBD;
+}
+
+main {
+    width: 80%;
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow-y: auto; /* Ensures the main content is scrollable */
+    margin-top: 8%;
+}
+
+.terms-section,
+.privacy-section {
+    margin-bottom: 40px;
+}
+
+h1 {
+    text-align: center;
+    background-color: rgb(102, 61, 140);
+    color: #ffffff;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333333;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p,
+ul {
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+footer {
+    text-align: center;
+    color: #4b096a;
+    padding: 20px 0;
+    background-color: #333333;
+    color: white;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+    footer p {
+        margin: 0;
+    }
