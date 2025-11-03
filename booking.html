@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/booking.css" />
+    <link rel="stylesheet" href="css/booking.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
 
@@ -29,6 +29,8 @@
             <a href="blog.html">Blogs</a>
             <a href="postes.html">postes</a>
             <a href="terms.html">Terms & Conditions</a>
+        <a href="Dashboard.html">Dashboard</a>
+
         </nav>
     </header>
 <main>
@@ -157,7 +159,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Family therapy</span>
                             <p class="text-muted">Nearest appointment: Nov. 4 , Aswan</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book ">Book Now </button>
                         </div>
                     </div>
 
@@ -180,7 +182,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Therapist</span>
                             <p class="text-muted">Nearest appointment: Nov. 14 , Luxor</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
 
@@ -203,7 +205,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Clinical Psychology</span>
                             <p class="text-muted">Nearest appointment: Sep. 1 , Minya</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
 
@@ -226,7 +228,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Consulting Psychology</span>
                             <p class="text-muted">Nearest appointment: Nov. 8 , Qena</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
 
@@ -249,7 +251,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Depression, Addiction</span>
                             <p class="text-muted">Nearest appointment: Nov. 1 , Assiut</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
 
@@ -272,7 +274,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Therapist</span>
                             <p class="text-muted">Nearest appointment: Nov. 14 , Luxor</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="booky">Book Now</button>
                         </div>
                     </div>
 
@@ -295,7 +297,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Counseling Psychology</span>
                             <p class="text-muted">Nearest appointment: Nov. 14 , Luxor</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
 
@@ -318,7 +320,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Clinical Psychology</span>
                             <p class="text-muted">Nearest appointment: Nov. 20 , Assiut</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
 
@@ -341,7 +343,7 @@
                             </div>
                             <span class="badge bg-light text-primary">Neuropsychiatry</span>
                             <p class="text-muted">Nearest appointment: Nov. 10 , Qena</p>
-                            <button class="btn btn-primary">Book Now</button>
+                            <button class="book">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -490,7 +492,7 @@
             const specialtyEl = card.querySelector('.badge');
             const priceEl = card.querySelector('.bi-cash').nextElementSibling;
             const imageEl = card.querySelector('img');
-            const bookBtn = card.querySelector('.btn-primary');
+            const bookBtn = card.querySelector('.book');
             
             if (bookBtn && doctorNameEl && specialtyEl && priceEl && imageEl) {
                 bookBtn.addEventListener('click', function(e) {

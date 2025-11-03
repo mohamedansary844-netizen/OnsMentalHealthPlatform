@@ -82,10 +82,10 @@ body {
     color: #8513d6 !important;
 }
 
-.btn-clear, .btn-primary {
+.btn-clear {
     background-color: #62276b;
-    color: white;
-    border: 2px solid #553581;
+    color: rgb(197, 23, 23);
+    border: 2px solid #da2dda;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
@@ -94,7 +94,19 @@ body {
     transition: background-color 0.3s, border-color 0.3s;
     cursor: pointer;
 }
+.book{
+  background-color: #62276b;
+    color: white;
+    border: 2px solid #da2dda;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
 
+}
     .btn-clear:hover, .btn-primary:hover {
         background-color: #7a3e8b;
         border-color: #6a2e7b;

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #e6e6fa, #f8f5ff); /* Light purple gradient */
+            margin: 0;
+            padding: 20px;
+            direction: ltr;
+            color: #333;
+            animation: backgroundPulse 10s infinite alternate;
+        }
+        @keyframes backgroundPulse {
+            0% { background-color: #e6e6fa; }
+            100% { background-color: #f5f0ff; }
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .search-section {
+            width: 300px;
+            background: linear-gradient(to bottom, #9370db, #7b68ee); /* Medium light purple */
+            padding: 30px 20px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .search-section:hover {
+            transform: scale(1.02);
+        }
+        .search-section h2 {
+            margin-top: 0;
+            text-align: center;
+            font-size: 24px;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+            100% { text-shadow: 0 0 15px rgba(255,255,255,0.8); }
+        }
+        .search-section label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        .search-section select, .search-section input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .search-section select:focus, .search-section input:focus {
+            background-color: white;
+            color: #333;
+            transform: scale(1.05);
+        }
+        .search-section option {
+            color: #333;
+        }
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            width: calc(100% - 320px);
+        }
+        .doctor-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            animation: cardPop 0.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        .doctor-card:hover::before {
+            left: 100%;
+        }
+        @keyframes cardPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .doctor-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background-color: #f0e6ff; /* Very light purple on hover */
+        }
+        .doctor-card h3 {
+            margin: 0 0 15px;
+            color: #9370db; /* Medium purple */
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .doctor-card:hover h3 {
+            color: #7b68ee;
+        }
+        .doctor-card p {
+            margin: 10px 0;
+            font-size: 16px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .doctor-card:hover p {
+            opacity: 1;
+        }
+        .rate-stars {
+            color: #9370db; /* Purple for stars */
+            font-size: 18px;
+        }
+        .book-button {
+            display: block;
+            margin: 15px auto 0;
+            padding: 10px 20px;
+            background-color: #9370db; /* Medium purple */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .book-button:hover {
+            background-color: #7b68ee;
+            transform: scale(1.1);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .search-section {
+                width: 100%;
+            }
+            .doctors-grid {
+                width: 100%;
+            }
+        }
+        /* Additional animations for loading */
+        .loading {
+            text-align: center;
+            font-size: 18px;
+            color: #9370db; /* Purple */
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Enhanced Booking Modal Styles */
+        .booking-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: modalFadeIn 0.5s ease-in-out;
+            backdrop-filter: blur(5px); /* Blur background for modern look */
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .booking-form {
+            background: linear-gradient(to bottom, #ffffff, #f0e6ff); /* Light purple gradient */
+            padding: 40px;
+            border-radius: 20px;
+            width: 450px;
+            max-width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(147, 112, 219, 0.3); /* Purple shadow */
+            animation: formSlideIn 0.6s ease-out;
+            position: relative;
+            border: 1px solid #e6e6fa;
+        }
+        @keyframes formSlideIn {
+            from { transform: translateY(-50px) scale(0.9); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .booking-form h2 {
+            color: #9370db;
+            margin-bottom: 20px;
+            font-size: 26px;
+            animation: titleGlow 2s infinite alternate;
+        }
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 5px rgba(147, 112, 219, 0.5); }
+            100% { text-shadow: 0 0 15px rgba(147, 112, 219, 0.8); }
+        }
+        .booking-form label {
+            display: block;
+            text-align: left;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #7b68ee;
+            transition: color 0.3s;
+        }
+        .booking-form input, .booking-form select, .booking-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #e6e6fa;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: fieldFade 0.5s ease-in-out forwards;
+            opacity: 0;
+        }
+        .booking-form input:nth-child(2), .booking-form label:nth-child(1) { animation-delay: 0.1s; }
+        .booking-form input:nth-child(4), .booking-form label:nth-child(3) { animation-delay: 0.2s; }
+        .booking-form select, .booking-form label:nth-child(5) { animation-delay: 0.3s; }
+        .booking-form textarea, .booking-form label:nth-child(7) { animation-delay: 0.4s; }
+        .booking-form button { animation-delay: 0.5s; }
+        @keyframes fieldFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
+            border-color: #9370db;
+            box-shadow: 0 0 10px rgba(147, 112, 219, 0.3);
+            transform: scale(1.02);
+        }
+        .booking-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .booking-form .book-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .booking-form .book-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .booking-form .book-button:hover::before {
+            left: 100%;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            color: #9370db;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: bounce 2s infinite;
+        }
+        .close-btn:hover {
+            color: #7b68ee;
+            transform: scale(1.2);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-section">
+            <h2>Search and Filter Doctors</h2>
+            <label for="specialty">Specialty</label>
+            <select id="specialty">
+                <option value="">All Specialties</option>
+            </select>
+
+            <label for="governorate">Governorate</label>
+            <select id="governorate">
+                <option value="">All Governorates</option>
+            </select>
+
+            <label for="minRate">Minimum Rating (0-5)</label>
+            <input type="number" id="minRate" min="0" max="5" step="0.1" placeholder="Example: 4">
+
+            <label for="maxPrice">Maximum Session Price</label>
+            <input type="number" id="maxPrice" min="0" placeholder="Example: 500">
+        </div>
+
+        <div class="doctors-grid" id="doctorsGrid">
+            <!-- Doctors will be injected here via JS -->
+        </div>
+    </div>
+
+    <!-- Enhanced Booking Modal Page -->
+    <div class="booking-page" id="bookingPage">
+        <span class="close-btn" onclick="closeBooking()">×</span>
+        <div class="booking-form">
+            <h2 id="bookingDoctorName">Book with Dr. [Name]</h2>
+            <label for="patientName">Patient Name</label>
+            <input type="text" id="patientName" placeholder="Enter your name">
+            
+            <label for="appointmentDate">Session Date</label>
+            <input type="date" id="appointmentDate">
+            
+            <label for="appointmentTime">Time</label>
+            <select id="appointmentTime">
+                <option value="">Choose Time</option>
+                <option value="9:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+            </select>
+            
+            <label for="notes">Notes</label>
+            <textarea id="notes" placeholder="Any additional notes"></textarea>
+            
+            <button class="book-button" onclick="confirmBooking()">Confirm Booking</button>
+        </div>
+    </div>
+
+    <script>
+        // Expanded data for 30 doctors in mental health specialties
+        const doctors = [
+            // Cairo (10 doctors)
+            { id: 1, name: "Dr. Ahmed Mohamed", specialty: "Psychiatry", phone: "0123456789", price: 300, location: "Nasr City", rate: 4.5, governorate: "Cairo" },
+            { id: 2, name: "Dr. Nora Ibrahim", specialty: "Psychotherapy", phone: "0556677889", price: 350, location: "Helwan", rate: 4.7, governorate: "Cairo" },
+            { id: 3, name: "Dr. Sara Mahmoud", specialty: "Clinical Psychology", phone: "0221133445", price: 300, location: "Maadi", rate: 4.6, governorate: "Cairo" },
+            { id: 4, name: "Dr. Omar Khaled", specialty: "Counseling", phone: "0112233556", price: 400, location: "New Cairo", rate: 4.2, governorate: "Cairo" },
+            { id: 5, name: "Dr. Lama Youssef", specialty: "Child Psychology", phone: "0334455667", price: 250, location: "Shubra", rate: 4.9, governorate: "Cairo" },
+            { id: 6, name: "Dr. Hassan Ali", specialty: "Addiction Therapy", phone: "0445566778", price: 200, location: "Ain Shams", rate: 3.8, governorate: "Cairo" },
+            { id: 7, name: "Dr. Reem Sami", specialty: "Psychiatry", phone: "0667788990", price: 280, location: "New Heliopolis", rate: 4.4, governorate: "Cairo" },
+            { id: 8, name: "Dr. Karim Ahmed", specialty: "Psychotherapy", phone: "0778899001", price: 320, location: "Zamalek", rate: 4.1, governorate: "Cairo" },
+            { id: 9, name: "Dr. Mona Farouk", specialty: "Clinical Psychology", phone: "0889900112", price: 450, location: "Garden City", rate: 5.0, governorate: "Cairo" },
+            { id: 10, name: "Dr. Tarek Hassan", specialty: "Counseling", phone: "0990011223", price: 220, location: "Dokki", rate: 4.3, governorate: "Cairo" },
+
+            // Alexandria (6 doctors)
+            { id: 11, name: "Dr. Fatima Ali", specialty: "Child Psychology", phone: "0987654321", price: 200, location: "Smouha", rate: 4.8, governorate: "Alexandria" },
+            { id: 12, name: "Dr. Mohamed Salem", specialty: "Addiction Therapy", phone: "0998877665", price: 250, location: "San Stefano", rate: 4.2, governorate: "Alexandria" },
+            { id: 13, name: "Dr. Inas Ramadan", specialty: "Psychiatry", phone: "0109988776", price: 330, location: "Raml Station", rate: 4.0, governorate: "Alexandria" },
+            { id: 14, name: "Dr. Sami Nabil", specialty: "Psychotherapy", phone: "0211099887", price: 380, location: "Loran's", rate: 4.5, governorate: "Alexandria" },
+            { id: 15, name: "Dr. Hoda Moustafa", specialty: "Clinical Psychology", phone: "0321100998", price: 180, location: "Agami", rate: 3.9, governorate: "Alexandria" },
+            { id: 16, name: "Dr. Bassem Gamal", specialty: "Counseling", phone: "0432211009", price: 220, location: "Sporting", rate: 4.7, governorate: "Alexandria" },
+
+            // Giza (5 doctors)
+            { id: 17, name: "Dr. Khaled Hassan", specialty: "Addiction Therapy", phone: "0112233445", price: 400, location: "Pyramids", rate: 3.9, governorate: "Giza" },
+            { id: 18, name: "Dr. Nadia Said", specialty: "Child Psychology", phone: "0543322112", price: 270, location: "Faisal", rate: 4.6, governorate: "Giza" },
+            { id: 19, name: "Dr. Ibrahim Zaki", specialty: "Psychiatry", phone: "0654433223", price: 310, location: "6th October", rate: 4.4, governorate: "Giza" },
+            { id: 20, name: "Dr. Salma Waheed", specialty: "Psychotherapy", phone: "0765544334", price: 190, location: "Mohandessin", rate: 5.0, governorate: "Giza" },
+            { id: 21, name: "Dr. Waleed Karim", specialty: "Counseling", phone: "0876655445", price: 210, location: "Dokki", rate: 4.1, governorate: "Giza" },
+
+            // Dakahlia (3 doctors)
+            { id: 22, name: "Dr. Lina Ahmed", specialty: "Clinical Psychology", phone: "0443322110", price: 180, location: "Mansoura", rate: 5.0, governorate: "Dakahlia" },
+            { id: 23, name: "Dr. Moustafa Abdullah", specialty: "Addiction Therapy", phone: "0988766554", price: 360, location: "Talkha", rate: 4.3, governorate: "Dakahlia" },
+            { id: 24, name: "Dr. Farida Saber", specialty: "Child Psychology", phone: "0877655443", price: 260, location: "Mit Ghamr", rate: 4.5, governorate: "Dakahlia" },
+
+            // Asyut (3 doctors)
+            { id: 25, name: "Dr. Ali Reda", specialty: "Psychiatry", phone: "0332211998", price: 450, location: "New Asyut", rate: 4.1, governorate: "Asyut" },
+            { id: 26, name: "Dr. Amira Hussein", specialty: "Psychotherapy", phone: "0766544332", price: 340, location: "Dayrut", rate: 3.7, governorate: "Asyut" },
+            { id: 27, name: "Dr. Rami Fouzi", specialty: "Counseling", phone: "0655433221", price: 230, location: "Manfalut", rate: 4.8, governorate: "Asyut" },
+
+            // Sharkia (3 doctors)
+            { id: 28, name: "Dr. Gamal Said", specialty: "Clinical Psychology", phone: "0554433221", price: 290, location: "Zagazig", rate: 4.2, governorate: "Sharkia" },
+            { id: 29, name: "Dr. Heba Mahmoud", specialty: "Addiction Therapy", phone: "0665544332", price: 170, location: "Belbeis", rate: 4.9, governorate: "Sharkia" },
+            { id: 30, name: "Dr. Ziyad Ashraf", specialty: "Psychiatry", phone: "0776655443", price: 370, location: "Faqous", rate: 4.0, governorate: "Sharkia" }
+        ];
+
+        // Current selected doctor
+        let selectedDoctor = null;
+
+        // Function to generate star rating
+        function generateStars(rate) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += i <= Math.floor(rate) ? '★' : (i - 0.5 === rate ? '☆' : '☆');
+            }
+            return `<span class="rate-stars">${stars} ${rate}</span>`;
+        }
+
+        // Function to render doctors
+        function renderDoctors(filteredDoctors) {
+            const grid = document.getElementById('doctorsGrid');
+            grid.innerHTML = '<div class="loading">Loading...</div>';
+            setTimeout(() => {
+                grid.innerHTML = '';
+                filteredDoctors.forEach((doc, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'doctor-card';
+                    card.style.animationDelay = `${index * 0.05}s`;
+                    card.innerHTML = `
+                        <h3>${doc.name}</h3>
+                        <p>Specialty: ${doc.specialty}</p>
+                        <p>Phone: ${doc.phone}</p>
+                        <p>Session Price: ${doc.price} EGP</p>
+                        <p>Location: ${doc.location}</p>
+                        <p>Rating: ${generateStars(doc.rate)}</p>
+                        <button class="book-button" onclick="openBooking(${doc.id})">Book Now</button>
+                    `;
+                    grid.appendChild(card);
+                });
+            }, 500);
+        }
+
+        // Open booking modal with reset animations
+        function openBooking(doctorId) {
+            selectedDoctor = doctors.find(d => d.id === doctorId);
+            if (selectedDoctor) {
+                document.getElementById('bookingDoctorName').textContent = `Book with ${selectedDoctor.name}`;
+                document.getElementById('bookingPage').style.display = 'flex';
+                // Reset field animations
+                const fields = document.querySelectorAll('.booking-form input, .booking-form select, .booking-form textarea, .booking-form button');
+                fields.forEach(field => {
+                    field.style.animation = 'none';
+                    setTimeout(() => { field.style.animation = ''; }, 10);
+                });
+            }
+        }
+
+        // Close booking
+        function closeBooking() {
+            document.getElementById('bookingPage').style.display = 'none';
+            document.getElementById('patientName').value = '';
+            document.getElementById('appointmentDate').value = '';
+            document.getElementById('appointmentTime').value = '';
+            document.getElementById('notes').value = '';
+        }
+
+        // Confirm booking (simple alert for demo)
+        function confirmBooking() {
+            const patientName = document.getElementById('patientName').value;
+            const date = document.getElementById('appointmentDate').value;
+            const time = document.getElementById('appointmentTime').value;
+            const notes = document.getElementById('notes').value;
+            if (patientName && date && time) {
+                alert(`Session booked successfully with ${selectedDoctor.name}!\nPatient Name: ${patientName}\nDate: ${date}\nTime: ${time}\nNotes: ${notes || 'None'}`);
+                closeBooking();
+            } else {
+                alert('Please fill all required fields!');
+            }
+        }
+
+        // Populate filters
+        function populateFilters() {
+            const specialties = [...new Set(doctors.map(d => d.specialty))];
+            const governorates = [...new Set(doctors.map(d => d.governorate))];
+
+            const specialtySelect = document.getElementById('specialty');
+            specialties.forEach(spec => {
+                const opt = document.createElement('option');
+                opt.value = spec;
+                opt.textContent = spec;
+                specialtySelect.appendChild(opt);
+            });
+
+            const govSelect = document.getElementById('governorate');
+            governorates.forEach(gov => {
+                const opt = document.createElement('option');
+                opt.value = gov;
+                opt.textContent = gov;
+                govSelect.appendChild(opt);
+            });
+        }
+
+        // Filter function
+        function applyFilters() {
+            const specialty = document.getElementById('specialty').value;
+            const governorate = document.getElementById('governorate').value;
+            const minRate = parseFloat(document.getElementById('minRate').value) || 0;
+            const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+
+            const filtered = doctors.filter(doc => {
+                return (!specialty || doc.specialty === specialty) &&
+                       (!governorate || doc.governorate === governorate) &&
+                       (doc.rate >= minRate) &&
+                       (doc.price <= maxPrice);
+            });
+
+            renderDoctors(filtered);
+        }
+
+        // Initial render
+        populateFilters();
+        renderDoctors(doctors);
+
+        // Add event listeners for filters
+        document.getElementById('specialty').addEventListener('change', applyFilters);
+        document.getElementById('governorate').addEventListener('change', applyFilters);
+        document.getElementById('minRate').addEventListener('input', applyFilters);
+        document.getElementById('maxPrice').addEventListener('input', applyFilters);
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('bookingPage');
+            if (event.target === modal) {
+                closeBooking();
+            }
+        }
+    </script>
+</body>
+</html>

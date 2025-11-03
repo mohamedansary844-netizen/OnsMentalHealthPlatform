@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health Buddy</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Floating Figure on the Left */
+    .floating-figure {
+        position: relative;
+        width: 150px;
+        height: auto;
+        animation: floatInSky 8s infinite ease-in-out, sway 3s infinite alternate;
+        z-index: 10;
+    }
+
+    @keyframes floatInSky {
+        0% { transform: translateY(0) translateX(0); }
+        50% { transform: translateY(-50px) translateX(20px); }
+        100% { transform: translateY(0) translateX(0); }
+    }
+
+    @keyframes sway {
+        0% { transform: rotate(-3deg); }
+        100% { transform: rotate(3deg); }
+    }
+
+    .floating-figure img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Clouds */
+    .cloud {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: drift 20s infinite linear;
+    }
+
+    .cloud1 {
+        width: 100px;
+        height: 50px;
+        top: 15%;
+        left: 5%;
+        animation-delay: 0s;
+    }
+
+    .cloud2 {
+        width: 80px;
+        height: 40px;
+        top: 30%;
+        left: 0%;
+        animation-delay: 7s;
+    }
+
+    @keyframes drift {
+        0% { transform: translateX(-50px); }
+        100% { transform: translateX( calc(100vw + 50px) ); }
+    }
+
+    /* Chat Container */
+    .chat-container {
+        width: 420px;
+        height: 520px;
+        background: #ffffff;
+        border-radius: 25px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid #b2ebf2;
+        animation: floatCard 6s infinite ease-in-out;
+    }
+
+    @keyframes floatCard {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .chat-header {
+        background: #00796b;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-icon {
+        margin-left: 12px;
+        font-size: 32px; /* أكبر شوي عشان الدماغ تبان */
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        0% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    .chat-body {
+        flex: 1;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+        background: #f5f5f5;
+    }
+
+    .chat-message {
+        max-width: 80%;
+        padding: 12px 18px;
+        border-radius: 20px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .user-msg {
+        background: #00796b;
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 0;
+    }
+
+    .bot-msg {
+        background: #b2ebf2;
+        color: #004d40;
+        align-self: flex-start;
+        border-bottom-left-radius: 0;
+    }
+
+    .chat-input {
+        display: flex;
+        padding: 10px;
+        background: #e0f7fa;
+        gap: 10px;
+    }
+
+    .chat-input input {
+        flex: 1;
+        padding: 12px;
+        border-radius: 20px;
+        border: 1px solid #b2ebf2;
+        font-size: 16px;
+    }
+
+    .chat-input input:focus {
+        outline: none;
+        border-color: #00796b;
+        box-shadow: 0 0 5px rgba(0,121,107,0.3);
+    }
+
+    .chat-input button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 20px;
+        background: #00796b;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .chat-input button:hover {
+        background: #004d40;
+    }
+</style>
+</head>
+<body>
+    <!-- Floating Figure -->
+    <div class="floating-figure">
+        <img src="https://cdn-icons-png.flaticon.com/512/3069/3069162.png" alt="Floating Figure">
+    </div>
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <!-- Chat -->
+    <div class="chat-container">
+        <div class="chat-header">
+            Mental Health Chat
+            <span class="header-icon">🧠</span> <!-- دماغ كبيرة -->
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-msg chat-message">Hello. I'm here to listen. How are you feeling today?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Share your thoughts...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+<script>
+const chatBody = document.getElementById('chatBody');
+const chatInput = document.getElementById('chatInput');
+
+function scrollToBottom() {
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function addMessage(text, className){
+    const msg = document.createElement('div');
+    msg.className = className + ' chat-message';
+    msg.textContent = text;
+    chatBody.appendChild(msg);
+    scrollToBottom();
+}
+
+function sendMessage(){
+    const userText = chatInput.value.trim();
+    if(!userText) return;
+
+    addMessage(userText,'user-msg');
+    chatInput.value = '';
+
+    const botMsg = document.createElement('div');
+    botMsg.className = 'bot-msg chat-message';
+    botMsg.textContent = 'Reflecting...';
+    chatBody.appendChild(botMsg);
+    scrollToBottom();
+
+    setTimeout(() => {
+        const responses = [
+            "Thank you for sharing. Tell me more if you'd like.",
+            "That sounds challenging. You're not alone.",
+            "Take a deep breath. How can I support you?",
+            "It's okay to feel this way. What's on your mind?",
+            "I'm listening. Your feelings are valid."
+        ];
+        botMsg.textContent = responses[Math.floor(Math.random()*responses.length)];
+        scrollToBottom();
+    }, 1000 + Math.random()*1000);
+}
+
+chatInput.addEventListener('keydown', e=>{
+    if(e.key==='Enter') sendMessage();
+});
+</script>
+</body>
+</html>
