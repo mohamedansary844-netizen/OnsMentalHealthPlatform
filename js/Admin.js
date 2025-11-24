@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
-import '../styles/Admin.css';
+import '../css/Admin.css';
 import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, toggleSidebar, setCurrentTab }) => {
